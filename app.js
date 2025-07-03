@@ -11,8 +11,8 @@ const cors =require('cors')
 const app=express()
 
 app.use(cors({
-    origin: 'https://frontend-duradior.vercel.app', // deployed frontend URL
-    credentials: true
+    origin: 'https://frontend-duradior.vercel.app', // Allow only your frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 app.use(express.json())
 app.use("/api/user/authorize",userauthroute)
