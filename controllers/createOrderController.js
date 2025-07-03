@@ -11,13 +11,13 @@ const creatingOrder=async(req,res)=>
 {   
     try
     {    
-        const receiptId = "order_" + Date.now();//this is for our purpose to uniquely identify each order
-        const {userName,items,amount,address,modeOfPay}=req.body;
+        const receiptID = "order_" + Date.now();//this is for our purpose to uniquely identify each order
+        const {userName,phNum,items,amount,address,modeOfPay}=req.body;
         //verification of the payment
         const option={
             amount:amount*100,
             currency:"INR",
-            receipt:receiptId,
+            receipt:receiptID,
             payment_capture:true
             }
     
@@ -27,13 +27,14 @@ const creatingOrder=async(req,res)=>
             userName:userName,
             items:items,
             address:address,
+            phNum:phNum,
             amount:amount,
             modeOfPay:modeOfPay,
             razorpayorderID:order.id,
-            receiptID:receiptId
+            receiptID:receiptID
         })
         await norderdb.save()
-        return res.json(order)
+        return res.status(200).json(order)
     }
     catch(er)
     {

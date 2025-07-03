@@ -3,23 +3,28 @@ const items=require('../collections/itemsCollection')
 const ispresent=async(req,res)=>{
     try
     {
-        const itemid=req.query.itemid;//single item checking is gonna be a get request
-        const isfound=await items.findOne({"itemId":itemid})
+        const {itemid,quantity}=req.query//single item checking is gonna be a get request
+        const isfound=await items.findOne({itemId:itemid})
+        console.log(itemid,quantity)
         if(!isfound)
         {
-            return res.status(404).json("invalid itemid given such item doesnt exist")
+            console.log(406)
+            return res.status(406).json("invalid itemid given such item doesnt exist")
         }
-        if(isfound.quantity>0)
+        if(isfound.quantity>=quantity)
         {
+            console.log(200)
             return res.status(200).json("allow item to be inserted")
         }
-        if(isfound.quantity<=0)
+        if(isfound.quantity<quantity)
         {
+            console.log(409)
             return res.status(409).json("item present but not enough quantity")
         }
     }
     catch(err)
     {
+        console.log(err)
         return res.status(500).json("unknown error encountered")
     }
 }

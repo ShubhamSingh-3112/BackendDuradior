@@ -3,9 +3,9 @@ const Items = require('../collections/itemsCollection');
 const browseProducts = async(req,res) =>{
     try
     {
-        const{category,minPrice,maxPrice,search,sort,inStock}=req.query;// nigga we goin to take filter parameters from the query in the request url
+        const{category,minPrice,maxPrice,search,sort,inStock}=req.query;// taking filter parameters from the query in the request url
         let filter = {};//filter empty at first
-        if (category) { //filtrr by category
+        if (category) { //filter by category
             filter.category = category;
         }
         if (minPrice||maxPrice) {//by price range
@@ -20,8 +20,8 @@ const browseProducts = async(req,res) =>{
             filter.quantity = { $gt:0 };
         }
         let sortOption = {};
-        if (sort==='price_asc') sortOption.cost = 1;//ascendin order niggA
-        else if (sort==='price_desc') sortOption.cost = -1;//descending order nigga
+        if (sort==='price_asc') sortOption.cost = 1;//ascending order
+        else if (sort==='price_desc') sortOption.cost = -1;//descending order
         const products = await Items.find(filter).sort(sortOption);
         res.status(200).json({success:true,data:products});
     } catch (err) {

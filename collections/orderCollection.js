@@ -3,7 +3,8 @@ const mongoose=require('mongoose')
 const orders=new mongoose.Schema(
     {
         userName:{type:String,required:true},//inserted in createorder(cord)
-        razorpayorderID:{type:String,required:true},//cord
+        phNum:{type:String,required:true},
+        razorpayorderID:{type:String,default:null},//cord
         receiptID:{type:String,required:true},//cord
         razorpaypaymentID:{type:String,default:null},
         items:[{//cord

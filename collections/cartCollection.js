@@ -1,9 +1,9 @@
 const mongoose=require('mongoose')
 
 const cartitems=new mongoose.Schema({
-    userPh:{type:String,require:true},
+    userPh:{type:String,required:true},
     items:[{
-        productID:{type:String,require:true},
+        productID:{type:String,required:true},
         quantity:{type:Number,default:1}
     }]
 })

@@ -17,6 +17,7 @@ app.use("/api/staff/authorize",staffauthroute)
 app.use("/api/staff/productmanage",manageprod)
 app.use("/api/user/browseproducts",browseprod)
 app.use("/api/user/Cart",add_saveCart)
+app.use("/api/user/order",create_validateOrder)
 const PORT=process.env.PORT||5000 //incase of live server change this
 
 //connect to database as follows

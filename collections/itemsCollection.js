@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 const newItem=new mongoose.Schema({
-    itemId:{type:Number,required:true},
+    itemId:{type:String,required:true},
     itemName:{type:String,required:true},
     description:{type:String},//new by shubham
     category:{type:String },// new by shubam 

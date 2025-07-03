@@ -1,4 +1,4 @@
-const prodUpdate=require('../controllers/prdouctmanagementController')
+const prodUpdate=require('../controllers/productmanagementController')
 const express=require('express')
 
 const route=express.Router()

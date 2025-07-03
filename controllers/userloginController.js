@@ -19,7 +19,10 @@ const login = async (req, res) => {
             return res.status(401).json("Invalid credentials. Please try again.");
         }//wrong password
 
-        return res.status(200).json("Login successful.");//correct password
+        return res.status(200).json({
+            Name: user.Name,
+            PhoneNum: user.PhoneNum
+        });//correct password
     } 
     catch (err) 
     {

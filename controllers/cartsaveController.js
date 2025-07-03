@@ -2,12 +2,12 @@ const cart=require('../collections/cartCollection')
 const insertcart=async(req,res)=>{
     try
     {
-        const {User,Items}=req.body;
-        const isfound=await cart.findOne({"userPh":User});
+        const {userPh,Items}=req.body;
+        const isfound=await cart.findOne({"userPh":userPh});
         if(!isfound)
         {
             const ncartitem=new cart({
-            userPh:User,
+            userPh:userPh,
             items:Items
             })
             await ncartitem.save();
@@ -15,7 +15,7 @@ const insertcart=async(req,res)=>{
         }
         else
         {
-            await  cart.findOneAndUpdate({"userPh":User},{"items":Items},{new:true});
+            await  cart.findOneAndUpdate({"userPh":userPh},{"items":Items},{new:true});
             return res.status(200).json("existing users cart is updated") 
         }
     }

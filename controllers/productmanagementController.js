@@ -43,7 +43,7 @@ const updateData=async (req,res)=>{
             else
             {
                 console.log("Item not found in the database to update")
-                return res.status(400).json("Item's details in the database has been updated")
+                return res.status(400).json("Item not found")
             }
         }
         if(Process==="Delete")
@@ -64,7 +64,7 @@ const updateData=async (req,res)=>{
     }
     catch(err)
     {
-        res.status(500).json("Server Error Try again later")
+        return res.status(500).json("Server Error Try again later")
     }
 }
 module.exports=updateData
