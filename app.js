@@ -10,7 +10,10 @@ const create_validateOrder=require('./routes/create_validateOrderRoute.js')
 const cors =require('cors')
 const app=express()
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://frontend-duradior.vercel.app', // deployed frontend URL
+    credentials: true
+}))
 app.use(express.json())
 app.use("/api/user/authorize",userauthroute)
 app.use("/api/staff/authorize",staffauthroute)
