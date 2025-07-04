@@ -10,10 +10,7 @@ const create_validateOrder=require('./routes/create_validateOrderRoute.js')
 const cors =require('cors')
 const app=express()
 
-app.use(cors({
-    origin: 'https://frontend-duradior.vercel.app', // Allow only your frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}))
+app.use(cors())
 app.use(express.json())
 app.get('/',(req,res)=>{
     res.send({
