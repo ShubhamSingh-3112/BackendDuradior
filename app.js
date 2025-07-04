@@ -15,6 +15,12 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 app.use(express.json())
+app.get('/',(req,res)=>{
+    res.send({
+        activeStatus:true,
+        error:false,
+    })
+})
 app.use("/api/user/authorize",userauthroute)
 app.use("/api/staff/authorize",staffauthroute)
 app.use("/api/staff/productmanage",manageprod)
